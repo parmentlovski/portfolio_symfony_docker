@@ -102,6 +102,6 @@ class AdminAccountAuthenticator extends AbstractFormLoginAuthenticator implement
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        return $this->urlGenerator->generate('app_login');
     }
 }
