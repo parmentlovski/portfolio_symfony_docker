@@ -15,7 +15,7 @@ class CreateUserController extends AbstractController
     /**
      * Affiche le formulaire d'inscription
      * 
-     * @Route("/create", name="create_user")
+     * @Route("/nimportequi", name="create_user")
      */
     public function create(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
