@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des réseaux
+{% endblock %}
+
+{% block body %}
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Url</th>
+				<th>Image</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for reseau in reseaux %}
+
+				<tr>
+					<td>{{reseau.title}}</td>
+					<td>{{reseau.url}}</td>
+					<td>
+						<img src="{{ vich_uploader_asset(reseau, 'imageFile') }}" alt="Logo {{ reseau.title }}">
+					</td>
+
+					<td>
+						<a href="{{ path('admin_reseaux_edit', {'id' : reseau.id}) }}">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a href="{{ path('admin_reseaux_delete', {'id' : reseau.id}) }}">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+
+			{% endfor %}
+
+		</tbody>
+	</table>
+
+{% endblock %}
