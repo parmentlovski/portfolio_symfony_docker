@@ -2,19 +2,22 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\UserRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
      /**
      * @Route("/", name="homepage")
      */
-    public function home()
+    public function home(UserRepository $repo)
     {
 
-        return $this->render('home.html.twig', [
+        $user = $repo->find(1);
 
+        return $this->render('home.html.twig', [
+            'user' => $user 
         ]);
     }
 
