@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminUserController!{% endblock %}
+
+{% block body %}
+
+
+<section>
+{% for user in users %}
+
+{{user.slogan}}
+{{user.accroche}}
+{{user.description}}
+
+<img src="{{ vich_uploader_asset(user, 'imageFile') }}">
+
+{% endfor %}
+</section>
+{% endblock %}
