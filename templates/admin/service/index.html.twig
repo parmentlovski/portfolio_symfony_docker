@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des services
+{% endblock %}
+
+{% block body %}
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Description</th>
+				<th>Image</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for service in services %}
+
+				<tr>
+					<td>{{service.title}}</td>
+					<td>{{service.description}}</td>
+					<td>
+						<img src="{{ vich_uploader_asset(service, 'imageFile') }}" alt="Logo {{ service.title }}">
+					</td>
+
+					<td>
+						<a href="{{ path('admin_services_edit', {'id' : service.id}) }}">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a href="{{ path('admin_services_delete', {'id' : service.id}) }}">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+
+			{% endfor %}
+
+		</tbody>
+	</table>
+
+{% endblock %}

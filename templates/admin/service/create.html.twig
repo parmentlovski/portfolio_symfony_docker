@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un service
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		<h1>Service</h1>
+
+			{{ form_start(form) }}
+
+			{{ form_widget(form) }}
+
+			<button type="submit">
+				<i class="fas fa-check"></i>
+				Ajouter un service
+			</button>
+
+			{{ form_end(form) }}
+	</div>
+{% endblock %}
