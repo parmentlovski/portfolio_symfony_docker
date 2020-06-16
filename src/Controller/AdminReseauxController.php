@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminReseauxController extends AbstractController
 {
     /**
+     * Affiche la page des réseaux
+     * 
      * @Route("/admin/reseaux/index", name="admin_reseaux_index")
      */
     public function index(ReseauxRepository $repo)
@@ -42,10 +44,6 @@ class AdminReseauxController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-        
-            // $ad->setAuthor($this->getUser());
-            // $ad->setUpdatedAt(new \DateTime('now'));
-            // $ad->initializeSlug();
             $manager->persist($reseaux);
             $manager->flush();
 
@@ -62,7 +60,7 @@ class AdminReseauxController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * Modifier les réseaux
      * 
      * @Route("/admin/reseaux/{id}/edit", name="admin_reseaux_edit")

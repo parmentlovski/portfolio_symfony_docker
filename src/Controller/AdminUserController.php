@@ -16,14 +16,14 @@ class AdminUserController extends AbstractController
      *  
      * Affiche mes informations 
      * 
-     * @Route("/admin/user", name="admin_user")
+     * @Route("/admin/user", name="admin_user_index")
      *
      * @return Response
      */
-    public function index(UserRepository $repo)
+    public function index(UserRepository $userRepo)
     {
 
-        $users = $repo->findAll();
+        $users = $userRepo->findAll();
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users 
@@ -33,7 +33,7 @@ class AdminUserController extends AbstractController
       /**
      * Permet de modifier mes informations
      * 
-     * @Route("/admin/user/{id}/edit", name="admin_edit")
+     * @Route("/admin/user/{id}/edit", name="admin_user_edit")
      *
      * @param User $user
      * @param Request $request
