@@ -1,17 +1,105 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue ma gueule !{% endblock %}
+{% block title %}Bienvenue ma gueule !
+{% endblock %}
 
 {% block body %}
 
 
-<h1 style="padding: 20px; margin:20px;"class="title is-4 has-centered has-background-success has-text-centered">Admin</h1>
+	<h1 class="title is-2 has-centered has-background-success has-text-centered my-4 mx-4 py-4">Admin</h1>
 
-<section class="section is-medium">
-<p style="font-family: 'Poppins', sans-serif;" class="subtitle">Voici les differentes tables</p>
+	<section class="section is-medium">
+
+		<div class="columns is-gapless is-multiline">
+
+			<div class="column is-6">
+				<h2 class="title is-4 has-text-centered">Contact</h2>
+
+				{% for reseau in reseaux %}
+					<ul>
+						<li>
+							<a class="breadcrumb-item-color breadcrumb-item-hover-color" href="{{path('admin_reseaux_edit', { id : reseau.id }) }}" target="_blank">{{reseau.title}}</a>
+						</li>
+						<li><img src="{{ vich_uploader_asset(reseau, 'imageFile') }}" alt="Réseau en rapport avec {{reseau.title}}"></li>
+					</ul>
+
+				{% endfor %}
+			</div>
+
+			<div class="column is-6">
+				<h2 class="title is-4 has-text-centered">Mes services</h2>
+
+				{% for service in services %}
+					<ul>
+						<li>
+							<a class="breadcrumb-item-color breadcrumb-item-hover-color" href="{{path('admin_services_edit', { id : service.id }) }}" target="_blank">{{service.title}}</a>
+						</li>
+						<li>{{service.description}}</li>
+						<li><img src="{{ vich_uploader_asset(service, 'imageFile') }}" alt="Service en rapport avec {{service.title}}"></li>
+					</ul>
+
+				{% endfor %}
+
+			</div>
+
+			<div class="column is-6">
+				<h2 class="title is-4 has-text-centered pb-2">
+					<a class="breadcrumb-item-color breadcrumb-item-hover-color" href="{{path('admin_user_edit', { id : users.id }) }}" target="_blank">Informations utilisateurs</a>
+				</h2>
+				<ul>
+					<li>
+						{{users.slogan}}
+					</li>
+					<li class="py-4">
+						{{ users.accroche }}
+					</li>
+					<li>
+						{{users.description}}
+					</li>
+				</ul>
+			</div>
+			<div class="column is-6">
+				<h2 class="title is-4 has-text-centered pb-2">
+					<a class="breadcrumb-item-color breadcrumb-item-hover-color" href="{{path('admin_projet_edit', { id : projets.id }) }}" target="_blank">
+						Dernier projet réalisé</h2>
+					<ul class="px-4">
+						<li>
+							<a href="{{projets.url}}" target="_blank">{{projets.title}}</a>
+						</li>
+						<li class="py-4">{{projets.description}}</li>
+						<li>{{projets.avis}}</li>
+						<li></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="section is-small has-centered">
+
+			<ul class="columns">
+				<li class"column is-8">
+					<a href="{{path('admin_reseaux_create')}}" target="_blank">
+						Ajouter un réseau
+						<i class="fas fa-arrow-circle-right"></i>
+					</a>
+				</li>
+				<li class"column is-4">
+					<a href="{{path('admin_services_create')}}" target="_blank">
+						Ajouter un service
+						<i class="fas fa-arrow-circle-right"></i>
+					</a>
+				</li>
+				<li class"column is-4">
+					<a href="{{path('admin_projet_create')}}" target="_blank">
+						Ajouter un projet
+						<i class="fas fa-arrow-circle-right"></i>
+					</a>
+				</li>
+			</ul>
+            
+		</section>
 
 
-</section>
-
-
-{% endblock %}
+	{% endblock %}
