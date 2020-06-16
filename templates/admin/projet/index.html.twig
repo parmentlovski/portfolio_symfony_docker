@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des projets
+{% endblock %}
+
+{% block body %}
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Titre</th>
+                <th>Description</th>
+				<th>Url</th>
+				<th>Image</th>
+                <th>Avis</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for projet in projets %}
+
+				<tr>
+					<td>{{projet.title}}</td>
+                    <td>{{projet.description}}</td>
+					<td>{{projet.url}}</td>
+					<td>
+						<img src="{{ vich_uploader_asset(projet, 'imageFile') }}" alt="Logo {{ projet.title }}">
+					</td>
+                    <td>{{projet.avis}}</td>
+					<td>
+						<a href="{{ path('admin_reseaux_edit', {'id' : projet.id}) }}">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a href="{{ path('admin_reseaux_delete', {'id' : projet.id}) }}">
+							<i class="fas fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+
+			{% endfor %}
+
+		</tbody>
+	</table>
+
+	{{ include('admin/return.html.twig')}}
+
+{% endblock %}
